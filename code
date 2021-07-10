@@ -1,0 +1,34 @@
+def loop():
+    while True:
+        option = input("Do you want to convert from...\nA) CENTIMETERS to FEET\nB) FEET to CENTIMETERS\n...or close program with QUIT or CLOSE, or by pressing ENTER...\n").lower()
+        if option in ["a", "b"]:
+            break
+        elif option in "close" or option in "quit":
+            input("\nGoodbye!\nPress RETURN to exit application...")
+            quit()
+        else:
+            print("Invalid selection please try again...\n")
+            loop()
+    if option in ("Aa"):
+        try:
+            c = float(input("\nEnter length in centimeters: "))
+            length = c / 2.54
+            feet = length // 12
+            inch = length - 12 * feet
+            print(f"{c} centimeters is {int(feet)}'{round(inch)}\"")
+            print(f"...upon closer inspection though, it's actually closer to {float(inch)} inches...!\n")
+            loop()
+        except ValueError:
+            print("Input not a number!\n")
+            loop()
+    elif option in ("Bb"):
+        try:
+            lenf = int(input("\nEnter JUST the length in feet here: "))
+            leni = float(input("Enter JUST the inches here: "))
+            length = lenf * 30.48 + leni * 2.54
+            print(f"{lenf} feet and {leni} inches is {length} centimeters.\n")
+            loop()
+        except ValueError:
+            print("Input not an acceptable number!\n")
+            loop()
+loop()
